@@ -28,17 +28,17 @@ Guilherme Almeida da Luz
     
 - [x]  **O campo <horário_atual> deve conter o horário atual em UTC, resolvido
 dinamicamente a cada requisição**
-- [ ]  **Crie um Dockerfile para a aplicação, que atenda aos seguintes requisitos:**
-    - [ ]  **build**
-    - [ ]  **execução da aplicação em container**
+- [x]  **Crie um Dockerfile para a aplicação, que atenda aos seguintes requisitos:**
+    - [x]  **build**
+    - [x]  **execução da aplicação em container**
 
 ## 2. Instalação e Configuração do Docker
 
-- [ ]  **Em um ambiente Linux de sua escolha, instale e configure o Docker.**
+- [x]  **Em um ambiente Linux de sua escolha, instale e configure o Docker.**
 
 ## 3. Configuração de Rede Docker
 
-- [ ]  **Crie uma rede Docker no modo bridge para comunicação entre containers.**
+- [x]  **Crie uma rede Docker no modo bridge para comunicação entre containers.**
 
 ## 4. Docker Compose
 
