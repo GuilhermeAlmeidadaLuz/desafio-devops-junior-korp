@@ -1,0 +1,20 @@
+services:
+  http-server-projeto-korp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - korp-network
+
+  nginx-korp:
+    image: nginx:1.31.3-trixie
+    ports:
+      - "80:80"
+    networks:
+      - korp-network
+    volumes:
+      - ./nginx/http-server-projeto-korp.conf:/etc/nginx/conf.d/default.conf
+
+networks:
+  korp-network:
+    driver: bridge
