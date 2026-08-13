@@ -7,6 +7,7 @@ Guilherme Almeida da Luz
     
     Esse desafio visa avaliar suas habilidades com Docker, programação, redes, servidores e
     automação em ambiente Linux, por meio da construção de um serviço simples em Golang e da infraestrutura necessária para sua execução em containers, com ênfase posterior em automação com Ansible.
+
 ---
 
 # Parte 1: Criação do Serviço e Arquitetura do Ambiente
@@ -42,35 +43,61 @@ dinamicamente a cada requisição**
 
 ## 4. Docker Compose
 
-- [ ]  Utilize Docker Compose para configurar dois containers:
-    - [ ]  **Container 1: http-server-projeto-korp**
-        - [ ]  Baseado na imagem construída anteriormente
-        - [ ]  Conectado à rede criada
-        - [ ]  Não deve expor portas diretamente ao host
-    - [ ]  **Container 2: nginx**
-        - [ ]  Imagem oficial do NGINX: https://hub.docker.com/_/nginx
-        - [ ]  Conectado à mesma rede do serviço http-server-projeto-korp
-        - [ ]  Porta 80 do host mapeada para a porta 80 do container
-        - [ ]  Monte um volume no caminho /etc/nginx/conf.d/
+- [x]  Utilize Docker Compose para configurar dois containers:
+    - [x]  **Container 1: http-server-projeto-korp**
+        - [x]  Baseado na imagem construída anteriormente
+        - [x]  Conectado à rede criada
+        - [x]  Não deve expor portas diretamente ao host
+    - [x]  **Container 2: nginx**
+        - [x]  Imagem oficial do NGINX: https://hub.docker.com/_/nginx
+        - [x]  Conectado à mesma rede do serviço http-server-projeto-korp
+        - [x]  Porta 80 do host mapeada para a porta 80 do container
+        - [x]  Monte um volume no caminho /etc/nginx/conf.d/
 
 ## 5. Configuração do Proxy Reverso
 
-- [ ]  No volume montado, adicione o arquivo http-server-projeto-korp.conf com a
+- [x]  No volume montado, adicione o arquivo http-server-projeto-korp.conf com a
 configuração de proxy reverso
-- [ ]  O NGINX deverá encaminhar requisições feitas à http://localhost:80 para o serviço na porta 8080
+- [x]  O NGINX deverá encaminhar requisições feitas à http://localhost:80 para o serviço na porta 8080
 
 ## 6. Teste de Funcionamento
 
-- [ ]  Teste o ambiente com o comando:
+- [x]  Teste o ambiente com o comando:
     
     ```bash
     curl http://localhost:80/projeto-korp
     ```
     
-- [ ]  A resposta esperada é o JSON gerado pelo http-server-projeto-korp:
+- [x]  A resposta esperada é o JSON gerado pelo http-server-projeto-korp:
     ```go
     {
     "nome": "Projeto Korp",
     "horario": "<horário_atual>"
     }
     ```
+
+---
+
+# Parte 2: Monitoramento e Observabilidade
+
+> #### O objetivo dessa etapa é adicionarmos monitoramento ao serviço http-server-projeto-korp.
+
+- **As seguintes métricas são obrigatórias:**
+    - [ ]  **disponibilidade do serviço**
+    - [ ]  **volume de requisições**
+
+> #### A forma de expor a disponibilidade do serviço pode ser definida pelo candidato (ex: métrica, endpoint dedicado, etc.). As métricas deverão ser expostas utilizando o padrão do Prometheus.
+
+## **Visualização das métricas**
+
+#### Altere o arquivo compose desenvolvido na Etapa 1 para que contenha os containers:
+
+- [ ]  **Grafana**
+- [ ]  **Prometheus**
+
+## Requisitos
+
+- [ ]  prometheus configurado para coletar as métricas expostas pelo serviço
+- [ ]  grafana configurado para visualizar essas métricas
+- [ ]  disponibilize um dashboard no Grafana que permita analisar o comportamento do
+serviço
